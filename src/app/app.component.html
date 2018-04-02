@@ -2,8 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <app-bikes *ngIf="loadedFeature === 'bike'"></app-bikes>
-      <app-gear-list *ngIf="loadedFeature !== 'bike'"></app-gear-list>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

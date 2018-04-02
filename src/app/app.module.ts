@@ -12,6 +12,7 @@ import { GearListComponent } from './gear-list/gear-list.component';
 import { GearEditComponent } from './gear-list/gear-edit/gear-edit.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { GearListService } from './gear-list/gear-list.service';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { GearListService } from './gear-list/gear-list.service';
   imports: [
     BrowserModule,
     FormsModule,
+    AppRoutingModule
   ],
   providers: [GearListService],
   bootstrap: [AppComponent]

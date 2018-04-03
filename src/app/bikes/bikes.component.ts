@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Bike } from './bike.model';
 import { BikeService } from './bike.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-bikes',
@@ -8,8 +9,9 @@ import { BikeService } from './bike.service';
   styleUrls: ['./bikes.component.css'],
   providers: [BikeService]
 })
-export class BikesComponent implements OnInit {
+export class BikesComponent implements OnInit, OnDestroy {
   selectedBike: Bike;
+  bikeSelectedSubscription: Subscription;
 
   constructor(private bikeService: BikeService) { }
 
@@ -22,4 +24,7 @@ export class BikesComponent implements OnInit {
       );
   }
 
+  ngOnDestroy() {
+    this.bikeSelectedSubscription.unsubscribe();
+  }
 }

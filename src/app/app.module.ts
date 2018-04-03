@@ -13,6 +13,8 @@ import { GearEditComponent } from './gear-list/gear-edit/gear-edit.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { GearListService } from './gear-list/gear-list.service';
 import { AppRoutingModule } from './app-routing.module';
+import { BikeStartComponent } from './bikes/bike-start/bike-start.component';
+import { BikeEditComponent } from './bikes/bike-edit/bike-edit.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { AppRoutingModule } from './app-routing.module';
     BikeItemComponent,
     GearListComponent,
     GearEditComponent,
-    DropdownDirective
+    DropdownDirective,
+    BikeStartComponent,
+    BikeEditComponent
   ],
   imports: [
     BrowserModule,

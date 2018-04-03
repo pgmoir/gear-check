@@ -44,6 +44,10 @@ export class BikeService {
         return this.bikes.slice();
     }
 
+    getBike(index: number) {
+        return this.bikes[index];
+    }
+
     addBikeComponentsToGearList(bikeComponents: BikeComponent[]) {
         this.slService.addBikeComponents(bikeComponents);
     }

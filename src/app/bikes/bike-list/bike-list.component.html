@@ -1,12 +1,12 @@
 <div class="row">
     <div class="col-xs-12">
-        <button class="btn btn-success">New Bike</button>
+        <button class="btn btn-success" (click)="addNewBike()">New Bike</button>
     </div>  
 </div>
 <hr>
 <div class="row">
     <div class="col-xs-12">
-        <app-bike-item  *ngFor="let bikeEl of bikes" [bike]="bikeEl"></app-bike-item>
+        <app-bike-item  *ngFor="let bikeEl of bikes; let i = index" [bike]="bikeEl" [index]="i"></app-bike-item>
     </div>
 </div>
 

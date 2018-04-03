@@ -15,7 +15,7 @@ export class BikeEditComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.params
+    this.routeParamsSubscription = this.route.params
       .subscribe(
         (params: Params) => {
           this.id = +params['id'];

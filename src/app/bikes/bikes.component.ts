@@ -16,7 +16,7 @@ export class BikesComponent implements OnInit, OnDestroy {
   constructor(private bikeService: BikeService) { }
 
   ngOnInit() {
-    this.bikeService.bikeSelected
+    this.bikeSelectedSubscription = this.bikeService.bikeSelected
       .subscribe(
         (bike: Bike) => {
           this.selectedBike = bike;

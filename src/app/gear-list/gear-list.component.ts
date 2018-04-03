@@ -16,7 +16,7 @@ export class GearListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.bikeComponents = this.slService.getBikeComponents();
-    this.slService.bikeComponentsChanged
+    this.bikeChangedSubscription = this.slService.bikeComponentsChanged
       .subscribe(
         (bikeComponents: BikeComponent[]) => {
           this.bikeComponents = bikeComponents;

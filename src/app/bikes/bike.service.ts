@@ -5,8 +5,6 @@ import { GearListService } from '../gear-list/gear-list.service';
 
 @Injectable()
 export class BikeService {
-    bikeSelected = new EventEmitter<Bike>();
-
     private bikes: Bike[] = [
         new Bike('Merida',
         'Carbon road bike',

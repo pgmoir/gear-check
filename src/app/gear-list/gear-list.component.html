@@ -3,7 +3,7 @@
     <app-gear-edit></app-gear-edit>
     <hr>
     <ul class="list-group">
-      <a class="list-group-item" style="cursor: pointer" *ngFor="let bikeComponent of bikeComponents">
+      <a class="list-group-item" style="cursor: pointer" *ngFor="let bikeComponent of bikeComponents; let i = index" (click)="onEditItem(i)">
         {{ bikeComponent.name }} ({{ bikeComponent.amount }})
       </a>
     </ul>

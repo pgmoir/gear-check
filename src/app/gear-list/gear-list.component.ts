@@ -10,13 +10,13 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class GearListComponent implements OnInit, OnDestroy {
   bikeComponents: BikeComponent[];
-  bikeChangedSubscription: Subscription;
+  private bikeChangedSubscription: Subscription;
 
-  constructor(private slService: GearListService) { }
+  constructor(private glService: GearListService) { }
 
   ngOnInit() {
-    this.bikeComponents = this.slService.getBikeComponents();
-    this.bikeChangedSubscription = this.slService.bikeComponentsChanged
+    this.bikeComponents = this.glService.getBikeComponents();
+    this.bikeChangedSubscription = this.glService.bikeComponentsChanged
       .subscribe(
         (bikeComponents: BikeComponent[]) => {
           this.bikeComponents = bikeComponents;
@@ -28,4 +28,6 @@ export class GearListComponent implements OnInit, OnDestroy {
     this.bikeChangedSubscription.unsubscribe();
   }
 
-}
+  onEditItem(index: number) {
+    this.glService.startedEditing.next(index);
+}}

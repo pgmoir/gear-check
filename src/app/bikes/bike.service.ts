@@ -2,9 +2,12 @@ import { Bike } from './bike.model';
 import { EventEmitter, Injectable } from '@angular/core';
 import { BikeComponent } from '../shared/bike-component.model';
 import { GearListService } from '../gear-list/gear-list.service';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class BikeService {
+    bikesChanged = new Subject<Bike[]>();
+
     private bikes: Bike[] = [
         new Bike('Merida',
         'Carbon road bike',
@@ -48,5 +51,20 @@ export class BikeService {
 
     addBikeComponentsToGearList(bikeComponents: BikeComponent[]) {
         this.slService.addBikeComponents(bikeComponents);
+    }
+
+    addBike(bike: Bike) {
+        this.bikes.push(bike);
+        this.bikesChanged.next(this.bikes.slice());
+    }
+
+    updateBike(index: number, newBike: Bike) {
+        this.bikes[index] = newBike;
+        this.bikesChanged.next(this.bikes.slice());
+    }
+
+    deleteBike(index: number) {
+        this.bikes.splice(index, 1);
+        this.bikesChanged.next(this.bikes.slice());
     }
 }

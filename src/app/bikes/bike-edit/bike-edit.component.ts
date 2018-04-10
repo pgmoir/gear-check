@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { BikeService } from '../bike.service';
+import { Bike } from '../bike.model';
 
 @Component({
   selector: 'app-bike-edit',
@@ -15,7 +16,7 @@ export class BikeEditComponent implements OnInit, OnDestroy {
   routeParamsSubscription: Subscription;
   bikeForm: FormGroup;
 
-  constructor(private route: ActivatedRoute, private bikeService: BikeService) { }
+  constructor(private route: ActivatedRoute, private bikeService: BikeService, private router: Router) { }
 
   ngOnInit() {
     this.routeParamsSubscription = this.route.params
@@ -69,11 +70,28 @@ export class BikeEditComponent implements OnInit, OnDestroy {
     );
   }
 
+  onDeleteBikeComponent(index: number) {
+    (<FormArray>this.bikeForm.get('bikeComponents')).removeAt(index);
+  }
+
   onSubmit() {
-    console.log(this.bikeForm);
+    if (this.editMode) {
+      this.bikeService.updateBike(this.id, this.bikeForm.value);
+    } else {
+      this.bikeService.addBike(this.bikeForm.value);
+    }
+    this.navigateBack();
+  }
+
+  onCancel() {
+    this.navigateBack();
   }
 
   ngOnDestroy() {
     this.routeParamsSubscription.unsubscribe();
+  }
+
+  navigateBack() {
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
 }

@@ -15,6 +15,7 @@ import { GearListService } from './gear-list/gear-list.service';
 import { AppRoutingModule } from './app-routing.module';
 import { BikeStartComponent } from './bikes/bike-start/bike-start.component';
 import { BikeEditComponent } from './bikes/bike-edit/bike-edit.component';
+import { BikeService } from './bikes/bike.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { BikeEditComponent } from './bikes/bike-edit/bike-edit.component';
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [GearListService],
+  providers: [GearListService, BikeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

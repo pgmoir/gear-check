@@ -38,4 +38,9 @@ export class BikeDetailComponent implements OnInit, OnDestroy {
     this.router.navigate(['edit'], { relativeTo: this.route });
   }
 
+  deleteBike() {
+    this.bikeService.deleteBike(this.id);
+    this.router.navigate(['/bikes'], { relativeTo: this.route });
+  }
+
 }

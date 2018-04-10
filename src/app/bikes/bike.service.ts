@@ -8,36 +8,38 @@ import { Subject } from 'rxjs/Subject';
 export class BikeService {
     bikesChanged = new Subject<Bike[]>();
 
-    private bikes: Bike[] = [
-        new Bike('Merida',
-        'Carbon road bike',
-        '/assets/images/bikes/IMG_0000.JPG',
-        [
-            new BikeComponent('Rings', 2),
-            new BikeComponent('Cassette', 10)
-        ]),
-        new Bike('Sab',
-        'Daily commute road bike',
-        '/assets/images/bikes/IMG_4814.JPG',
-        [
-            new BikeComponent('Rings', 2),
-            new BikeComponent('Cassette', 10)
-        ]),
-        new Bike('Dolan Gold',
-        'Track bike (sold)',
-        '/assets/images/bikes/IMG_5229.JPG',
-        [
-            new BikeComponent('Rings', 1),
-            new BikeComponent('Cassette', 1)
-        ]),
-        new Bike('Cinelli',
-        'A disguised Dolan cross bike',
-        '/assets/images/bikes/IMG_4817.JPG',
-        [
-            new BikeComponent('Rings', 1),
-            new BikeComponent('Cassette', 9)
-        ]),
-      ];
+    private bikes: Bike[] = [];
+
+    // = [
+    //     new Bike('Merida',
+    //     'Carbon road bike',
+    //     '/assets/images/bikes/IMG_0000.JPG',
+    //     [
+    //         new BikeComponent('Rings', 2),
+    //         new BikeComponent('Cassette', 10)
+    //     ]),
+    //     new Bike('Sab',
+    //     'Daily commute road bike',
+    //     '/assets/images/bikes/IMG_4814.JPG',
+    //     [
+    //         new BikeComponent('Rings', 2),
+    //         new BikeComponent('Cassette', 10)
+    //     ]),
+    //     new Bike('Dolan Gold',
+    //     'Track bike (sold)',
+    //     '/assets/images/bikes/IMG_5229.JPG',
+    //     [
+    //         new BikeComponent('Rings', 1),
+    //         new BikeComponent('Cassette', 1)
+    //     ]),
+    //     new Bike('Cinelli',
+    //     'A disguised Dolan cross bike',
+    //     '/assets/images/bikes/IMG_4817.JPG',
+    //     [
+    //         new BikeComponent('Rings', 1),
+    //         new BikeComponent('Cassette', 9)
+    //     ]),
+    //   ]
 
     constructor(private slService: GearListService) {}
 
@@ -65,6 +67,11 @@ export class BikeService {
 
     deleteBike(index: number) {
         this.bikes.splice(index, 1);
+        this.bikesChanged.next(this.bikes.slice());
+    }
+
+    setBikes(bikes: Bike[]) {
+        this.bikes = bikes;
         this.bikesChanged.next(this.bikes.slice());
     }
 }

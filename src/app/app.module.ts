@@ -16,6 +16,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { BikeStartComponent } from './bikes/bike-start/bike-start.component';
 import { BikeEditComponent } from './bikes/bike-edit/bike-edit.component';
 import { BikeService } from './bikes/bike.service';
+import { HttpModule } from '@angular/http';
+import { DataStorageService } from './shared/data-storage.service';
 
 @NgModule({
   declarations: [
@@ -35,9 +37,10 @@ import { BikeService } from './bikes/bike.service';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpModule,
     AppRoutingModule
   ],
-  providers: [GearListService, BikeService],
+  providers: [GearListService, BikeService, DataStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

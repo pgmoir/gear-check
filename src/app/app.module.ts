@@ -18,6 +18,9 @@ import { BikeEditComponent } from './bikes/bike-edit/bike-edit.component';
 import { BikeService } from './bikes/bike.service';
 import { HttpModule } from '@angular/http';
 import { DataStorageService } from './shared/data-storage.service';
+import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import { AuthService } from './auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,9 @@ import { DataStorageService } from './shared/data-storage.service';
     GearEditComponent,
     DropdownDirective,
     BikeStartComponent,
-    BikeEditComponent
+    BikeEditComponent,
+    SignupComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +45,7 @@ import { DataStorageService } from './shared/data-storage.service';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [GearListService, BikeService, DataStorageService],
+  providers: [GearListService, BikeService, DataStorageService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

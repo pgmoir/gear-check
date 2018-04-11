@@ -7,10 +7,9 @@ import { Subject } from 'rxjs/Subject';
 @Injectable()
 export class BikeService {
     bikesChanged = new Subject<Bike[]>();
+    private bikes: Bike[]= [];
 
-    private bikes: Bike[] = [];
-
-    // = [
+    // private bikes: Bike[]= [
     //     new Bike('Merida',
     //     'Carbon road bike',
     //     '/assets/images/bikes/IMG_0000.JPG',
@@ -38,6 +37,13 @@ export class BikeService {
     //     [
     //         new BikeComponent('Rings', 1),
     //         new BikeComponent('Cassette', 9)
+    //     ]),
+    //     new Bike('Giant Contend',
+    //     'New commute bike',
+    //     'https://images.giant-bicycles.com/b_white,c_pad,h_400,q_80/Contend-SL-1-Disc-Color-A-Charcoal/Contend-SL-1-Disc-Color-A-Charcoal.jpg',
+    //     [
+    //         new BikeComponent('Rings', 2),
+    //         new BikeComponent('Cassette', 11)
     //     ]),
     //   ]
 

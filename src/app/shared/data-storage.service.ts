@@ -3,17 +3,20 @@ import { Http, Response } from '@angular/http';
 import { BikeService } from '../bikes/bike.service';
 import { Bike } from '../bikes/bike.model';
 import 'rxjs/Rx';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable()
 export class DataStorageService {
-    constructor(private http: Http, private bikeService: BikeService) {}
+    constructor(private http: Http, private bikeService: BikeService, private authService: AuthService) {}
 
     storeBikes() {
-        return this.http.put('https://gear-check.firebaseio.com/bikes.json', this.bikeService.getBikes());
+        const token = this.authService.getToken();
+        return this.http.put('https://gear-check.firebaseio.com/bikes.json?auth=' + token, this.bikeService.getBikes());
     }
 
     getBikes() {
-        this.http.get('https://gear-check.firebaseio.com/bikes.json')
+        const token = this.authService.getToken();
+        this.http.get('https://gear-check.firebaseio.com/bikes.json?auth=' + token)
             .map(
                 (response: Response) => {
                     const bikes: Bike[] = response.json();

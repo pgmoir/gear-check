@@ -1,51 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { BikesComponent } from './bikes/bikes.component';
-import { BikeListComponent } from './bikes/bike-list/bike-list.component';
-import { BikeDetailComponent } from './bikes/bike-detail/bike-detail.component';
-import { BikeItemComponent } from './bikes/bike-list/bike-item/bike-item.component';
-import { GearListComponent } from './gear-list/gear-list.component';
-import { GearEditComponent } from './gear-list/gear-edit/gear-edit.component';
-import { DropdownDirective } from './shared/dropdown.directive';
-import { GearListService } from './gear-list/gear-list.service';
 import { AppRoutingModule } from './app-routing.module';
-import { BikeStartComponent } from './bikes/bike-start/bike-start.component';
-import { BikeEditComponent } from './bikes/bike-edit/bike-edit.component';
-import { BikeService } from './bikes/bike.service';
-import { HttpModule } from '@angular/http';
-import { DataStorageService } from './shared/data-storage.service';
-import { SignupComponent } from './auth/signup/signup.component';
-import { SigninComponent } from './auth/signin/signin.component';
-import { AuthService } from './auth/auth.service';
+import { SharedModule } from './shared/shared.module';
+import { AuthModule } from './auth/auth.module';
+import { CoreModule } from './core/core.module';
+import { GearListModule } from './gear-list/gear-list.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    BikesComponent,
-    BikeListComponent,
-    BikeDetailComponent,
-    BikeItemComponent,
-    GearListComponent,
-    GearEditComponent,
-    DropdownDirective,
-    BikeStartComponent,
-    BikeEditComponent,
-    SignupComponent,
-    SigninComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule,
+    GearListModule,
+    AuthModule,
+    CoreModule
   ],
-  providers: [GearListService, BikeService, DataStorageService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
